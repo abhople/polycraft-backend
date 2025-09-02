@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "Bedrock Agent API",
+    "description": "Collection for testing the Bedrock Agent API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Invoke Bedrock Agent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"agentId\": \"your_agent_id_here\",\n  \"inputText\": \"Hello, how can you help me?\",\n  \"sessionId\": \"test-session-123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/invoke-agent",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["invoke-agent"]
+        }
+      }
+    },
+    {
+      "name": "Get Agent Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/agent/your_agent_id_here",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["agent", "your_agent_id_here"]
+        }
+      }
+    }
+  ]
+} 
