@@ -5,21 +5,22 @@ Your task is to convert insurance policy specifications into a hierarchical XMin
 2. A human-readable plain English policy description
 
 Instructions:
-1. Root node = Policy Name
-2. First-level nodes = Policy sections (Coverage, Exclusions, Limits, Conditions)
-3. Second-level nodes = Rules or main points in the section
-4. Third-level nodes = Sub-rules, conditions, limits, or exceptions
+1. Root node = Policy Name [use a concise label in square brackets]
+2. First-level nodes = Policy sections (Coverage, Exclusions, Limits, Conditions) [add short label in []]
+3. Second-level nodes = Rules or main points in the section [add short label in []]
+4. Third-level nodes = Sub-rules, conditions, limits, or exceptions [add short label in []]
 5. Use tab (\t) indentation for hierarchy
 6. Node names must follow APD conventions: concise, camelCase or TitleCase, optional prefixes like Rule:, Condition:, Limit:
-7. If the input is JSON:
+7. Every node must include a label in square brackets [ ] immediately after the node title
+8. If the input is JSON:
    - Extract policyName and sections
    - Convert each section detail into nodes following the rules above
-8. If the input is human-readable text:
+9. If the input is human-readable text:
    - Detect key sections (Coverage, Exclusions, Limits, Conditions)
-   - Convert each sentence or bullet point into concise APD-style nodes
-9. Maintain all details from the input; do not remove or oversimplify
-10. Do not output JSON or narrative text. Only tab-indented nodes
-11. Do not include any human-readable interpretation in parentheses; only concise node names
+   - Convert each sentence or bullet point into concise APD-style nodes with labels
+10. Maintain all details from the input; do not remove or oversimplify
+11. Do not output JSON or narrative text. Only tab-indented nodes with labels
+12. Do not include any human-readable interpretation in parentheses; only concise node names and labels
 
 Example Input (JSON):
 {
@@ -93,38 +94,38 @@ Compliance with ISO 27001 or NIST cybersecurity frameworks is recommended for fu
 Annual penetration testing is required for all critical systems."
 
 Example Output (for both JSON and Human-readable inputs):
-NextGenRetailCyberLiabilityPolicy
-	Coverage
-		FirstPartyDataLossCoverage
-		ThirdPartyLiabilityCoverage
-		ExtortionThreatsCoverage
-		ReputationalHarmCoverage
-	Exclusions
-		KnownVulnerabilitiesExcluded
-		MaliciousEmployeeActsExcluded
-		WarTerrorismExcluded
-		PriorKnownIncidentsExcluded
-	Limits
-		AggregateLimit
-			$20,000,000
-		PerIncidentLimit
-			$5,000,000
-		ReputationalHarmSubLimit
-			$1,000,000
-		RegulatoryFinesSubLimit
-			$500,000
-		StandardDeductible
-			$50,000
-		RansomwareDeductible
-			$100,000
-	Conditions
-		SecurityRequirements
-			multi-factor authentication
-			security audits
-		ImmediateReporting
-			24 hours
-		FrameworkCompliance
-		PenetrationTestingRequirement
+NextGenRetailCyberLiabilityPolicy [NGRC]
+	Coverage [Cov]
+		FirstPartyDataLossCoverage [FPDLC]
+		ThirdPartyLiabilityCoverage [TPLC]
+		ExtortionThreatsCoverage [ETC]
+		ReputationalHarmCoverage [RHC]
+	Exclusions [Exc]
+		KnownVulnerabilitiesExcluded [KVE]
+		MaliciousEmployeeActsExcluded [MEA]
+		WarTerrorismExcluded [WTE]
+		PriorKnownIncidentsExcluded [PKI]
+	Limits [Lim]
+		AggregateLimit [AggL]
+			$20,000,000 [$20M]
+		PerIncidentLimit [PIL]
+			$5,000,000 [$5M]
+		ReputationalHarmSubLimit [RHS]
+			$1,000,000 [$1M]
+		RegulatoryFinesSubLimit [RFS]
+			$500,000 [$500K]
+		StandardDeductible [StdD]
+			$50,000 [$50K]
+		RansomwareDeductible [RansD]
+			$100,000 [$100K]
+	Conditions [Cond]
+		SecurityRequirements [SecReq]
+			multi-factor authentication [MFA]
+			security audits [Audits]
+		ImmediateReporting [IR]
+			24 hours [24H]
+		FrameworkCompliance [FC]
+		PenetrationTestingRequirement [PenTest]
 
 Now process the following policy specification:
 {policySpec}
